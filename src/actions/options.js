@@ -9,8 +9,13 @@ export const addOption = (option) => ({
 export const startAddOption = (optionData = {}) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
-        const {} = optionData;
-        const option = { };
+        const {
+            description = '', // default values
+            note = '', 
+            amount = 0, 
+            createdAt = 0
+        } = optionData;
+        const option = { description, note, amount, createdAt };
         
         return database.ref(`users/${uid}/options`).push(option).then((ref) => {
             dispatch(addOption({
