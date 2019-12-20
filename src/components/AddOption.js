@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { startAddOption } from '../actions/options';
 
-export default class AddOption extends React.Component {
+export class AddOption extends React.Component {
   state = {
     error: undefined
   };
@@ -8,6 +10,9 @@ export default class AddOption extends React.Component {
     e.preventDefault();
     const option = e.target.elements.option.value.trim();
     const error = this.props.handleAddOption(option);
+
+    // this.props.startAddOption(option);
+
     this.setState(() => ({
       error
     }));
@@ -28,3 +33,9 @@ export default class AddOption extends React.Component {
     );
   } 
 }
+
+const mapDispatchToProps = (dispatch) => ({
+  startAddOption: (option) => dispatch(startAddOption(option))
+});
+
+export default connect(undefined, mapDispatchToProps)(AddOption);
