@@ -3,6 +3,11 @@ public/dist/
 .env.test
 .env.development
 
+#public/bundle.js
+#public/bundle.js.map
+#public/styles.css
+#public/styles.css.map
+
 ### Node ###
 # Logs
 logs
